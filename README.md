@@ -120,20 +120,6 @@ vercel --prod
 vercel --prod
 ```
 
-## Common Issues
-
-### `getaddrinfo ENOTFOUND ...supabase.co`
-- Check `SUPABASE_DB_URL` host and credentials
-- URL-encode special chars in password
-
-### `Unexpected token '<'` in Swagger JS files
-- Usually means HTML is returned instead of JS (routing/rewrites issue)
-- Ensure latest code is deployed and open `/api-docs`
-
-### `item.price.toFixed is not a function`
-- Happens when DB numeric values are strings
-- Frontend already converts values safely before formatting
-
 ## Notes
 
 - `.env` should never be committed.
