@@ -103,7 +103,7 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 const swaggerUiAssetPath = swaggerUiDist.getAbsoluteFSPath();
 app.use('/api-docs', express.static(swaggerUiAssetPath));
-app.get('/api-docs', (req, res) => res.redirect('/api-docs/'));
+app.get('/api-docs', swaggerUi.setup(swaggerDocs));
 app.get('/api-docs/', swaggerUi.setup(swaggerDocs));
 
 // Fallback to index.html for non-API routes
