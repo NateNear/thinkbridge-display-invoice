@@ -3,7 +3,6 @@ const path = require('path');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUiDist = require('swagger-ui-dist');
 const db = require('./database');
 
 const app = express();
@@ -98,13 +97,10 @@ const swaggerOptions = {
         },
         basePath: "/"
     },
-    apis: ["server.js"]
+    apis: [path.join(__dirname, 'server.js')]
 };
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
-const swaggerUiAssetPath = swaggerUiDist.getAbsoluteFSPath();
-app.use('/api-docs', express.static(swaggerUiAssetPath));
-app.get('/api-docs', swaggerUi.setup(swaggerDocs));
-app.get('/api-docs/', swaggerUi.setup(swaggerDocs));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Fallback to index.html for non-API routes
 app.get(/(.*)/, (req, res) => {
