@@ -2,18 +2,25 @@
 body {
     background-color: #f9f9f9;
     font-family: 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 24px 12px;
+    color: #222;
 }
 
 #invoice-container {
     border: 1px solid #ccc;
     padding: 20px;
-    width: 60%;
+    width: min(760px, 92%);
     margin: auto;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border-radius: 8px;
 }
 
 h1 {
     text-align: center;
+    margin: 0 0 18px;
+    font-weight: 600;
 }
 
 #download-btn {
@@ -29,6 +36,33 @@ h1 {
 
 #download-btn:hover {
     background-color: #0056b3;
+}
+
+#invoice-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#invoice-container th,
+#invoice-container td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #ececec;
+}
+
+#invoice-container th {
+    text-align: left;
+    font-weight: 600;
+}
+
+#invoice-container .price {
+    text-align: right;
+    white-space: nowrap;
+}
+
+#invoice-container .total-row td {
+    font-weight: 700;
+    border-top: 2px solid #ddd;
+    border-bottom: none;
 }
 
 @media print {
@@ -112,5 +146,3 @@ input[type=number] {
     border-radius: 4px;
     box-sizing: border-box;
 }
-
-```
